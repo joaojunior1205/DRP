@@ -1,4 +1,4 @@
-package com.example.drp.dto.company;
+package com.example.drp.domain.company;
 
 public record CompanyRequestDTO (String name, String cnpj, String phone) {
 }

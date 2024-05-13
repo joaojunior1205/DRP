@@ -1,6 +1,4 @@
-package com.example.drp.dto.company;
-
-import com.example.drp.entities.Company;
+package com.example.drp.domain.company;
 
 public record CompanyResponseDTO(Long id, String name, String cnpj, String phone) {
 

@@ -1,8 +1,8 @@
 package com.example.drp.controllers;
 
-import com.example.drp.dto.product.ProductRequestDTO;
-import com.example.drp.dto.product.ProductResponseDTO;
-import com.example.drp.entities.Product;
+import com.example.drp.domain.product.ProductRequestDTO;
+import com.example.drp.domain.product.ProductResponseDTO;
+import com.example.drp.domain.product.Product;
 import com.example.drp.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +21,8 @@ public class ProductController {
         Product productData = new Product(data);
 
         productData.setCompanyId(1);
-        productData.setAuthorId(7);
-        productData.setUpdateAuthorId(7);
+        productData.setAuthorId(12);
+        productData.setUpdateAuthorId(12);
 
         repository.save(productData);
         return;

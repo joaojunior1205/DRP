@@ -1,6 +1,5 @@
-package com.example.drp.entities;
+package com.example.drp.domain.product;
 
-import com.example.drp.dto.product.ProductRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
