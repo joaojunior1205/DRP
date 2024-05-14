@@ -1,6 +1,4 @@
-package com.example.drp.dto.product;
-
-import com.example.drp.entities.Product;
+package com.example.drp.domain.product;
 
 public record ProductResponseDTO(Long id, double quantity, String name, String description, double price) {
 

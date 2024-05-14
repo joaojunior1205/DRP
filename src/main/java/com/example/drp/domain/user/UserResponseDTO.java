@@ -1,6 +1,4 @@
-package com.example.drp.dto.user;
-
-import com.example.drp.entities.User;
+package com.example.drp.domain.user;
 
 import java.sql.Timestamp;
 

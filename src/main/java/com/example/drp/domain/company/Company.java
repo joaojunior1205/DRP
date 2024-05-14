@@ -1,6 +1,5 @@
-package com.example.drp.entities;
+package com.example.drp.domain.company;
 
-import com.example.drp.dto.company.CompanyRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

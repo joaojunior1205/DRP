@@ -1,8 +1,8 @@
 package com.example.drp.controllers;
 
-import com.example.drp.dto.company.CompanyRequestDTO;
-import com.example.drp.dto.company.CompanyResponseDTO;
-import com.example.drp.entities.Company;
+import com.example.drp.domain.company.CompanyRequestDTO;
+import com.example.drp.domain.company.CompanyResponseDTO;
+import com.example.drp.domain.company.Company;
 import com.example.drp.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

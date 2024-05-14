@@ -1,4 +1,4 @@
-package com.example.drp.dto.product;
+package com.example.drp.domain.product;
 
 public record ProductRequestDTO(
         double quantity,
