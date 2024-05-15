@@ -42,7 +42,7 @@ public class User implements UserDetails {
     private Timestamp createdAt;
 
     @Column(name = "company_id")
-    private int companyId;
+    private long companyId;
 
     @Column(name = "role")
     private UserRole role;

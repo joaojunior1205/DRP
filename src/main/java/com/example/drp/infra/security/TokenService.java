@@ -4,19 +4,21 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.example.drp.domain.user.User;
+import com.example.drp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.Date;
 
 @Service
 public class TokenService {
 
     @Value("${api.security.token.secret}")
     private String secret;
+
+    private UserRepository userRepository;
 
     private final String origin = "drp-auth-api";
 
@@ -47,6 +49,20 @@ public class TokenService {
         } catch (JWTCreationException exception) {
             return "";
         }
+    };
+
+    public String extractUsername (String token) {
+        if (token.startsWith("Bearer ")) {
+            token = token.replace("Bearer ", "");
+        }
+
+        String username = JWT.decode(token).getSubject();
+
+        if (username != null) {
+            return username;
+        }
+
+        return null;
     };
 
     private Instant genExpirationDate() {
