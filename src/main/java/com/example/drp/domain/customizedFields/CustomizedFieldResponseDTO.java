@@ -6,7 +6,8 @@ public record CustomizedFieldResponseDTO (
         String name,
         String label,
         boolean obligatory,
-        FieldType type
+        FieldType type,
+        String value
 ) {
     public CustomizedFieldResponseDTO (CustomizedField customizedField) {
         this(
@@ -15,7 +16,20 @@ public record CustomizedFieldResponseDTO (
                 customizedField.getName(),
                 customizedField.getLabel(),
                 customizedField.isObligatory(),
-                customizedField.getType()
+                customizedField.getType(),
+                null
+        );
+    }
+
+    public CustomizedFieldResponseDTO (CustomizedField customizedField, String value) {
+        this(
+                customizedField.getId(),
+                customizedField.isActive(),
+                customizedField.getName(),
+                customizedField.getLabel(),
+                customizedField.isObligatory(),
+                customizedField.getType(),
+                value
         );
     }
 }
