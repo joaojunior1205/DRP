@@ -1,9 +1,8 @@
-package com.example.drp.services;
+package com.example.drp.domain.product;
 
-import com.example.drp.domain.product.Product;
 import com.example.drp.domain.user.User;
 
-public class ProductService {
+public class ProductAction {
 
     public Product populateProduct (Product product, User user) {
 

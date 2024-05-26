@@ -1,17 +1,12 @@
 package com.example.drp.controllers;
 
-import com.example.drp.domain.product.ProductRequestDTO;
-import com.example.drp.domain.product.ProductResponseDTO;
-import com.example.drp.domain.product.Product;
+import com.example.drp.domain.product.*;
 import com.example.drp.domain.user.User;
 import com.example.drp.infra.security.TokenService;
 import com.example.drp.repositories.ProductRepository;
 import com.example.drp.repositories.UserRepository;
-import com.example.drp.services.ProductService;
-import org.antlr.v4.runtime.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,7 +33,7 @@ public class ProductController {
             String username = new TokenService().extractUsername(authorizationHeader);
             User user = userRepository.findUserByEmail(username);
 
-            Product product = new ProductService().populateProduct(productData, user);
+            Product product = new ProductAction().populateProduct(productData, user);
 
             return ResponseEntity.ok().body(productRepository.save(product));
         } catch (Exception exception) {
