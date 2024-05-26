@@ -1,8 +1,11 @@
 package com.example.drp.controllers;
 
+import com.example.drp.domain.customizedFields.CustomizedField;
+import com.example.drp.domain.customizedFields.CustomizedFieldResponseDTO;
 import com.example.drp.domain.product.*;
 import com.example.drp.domain.user.User;
 import com.example.drp.infra.security.TokenService;
+import com.example.drp.repositories.CustomizedFieldRepository;
 import com.example.drp.repositories.ProductRepository;
 import com.example.drp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,9 @@ public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CustomizedFieldRepository customizedFieldRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -43,7 +49,17 @@ public class ProductController {
 
     @GetMapping
     public List<ProductResponseDTO> getAll() {
-        List<ProductResponseDTO> productList = productRepository.findAll().stream().map(ProductResponseDTO::new).toList();
+        List<ProductResponseDTO> productList = productRepository.findAll().stream().map(product -> {
+            List<Object[]> getCustomfields = customizedFieldRepository.findCustomizedFieldsByProductId(product.getId());
+            List<CustomizedFieldResponseDTO> customFields = new java.util.ArrayList<>();
+
+            for (Object[] getCustomfield : getCustomfields) {
+                customFields.add(new CustomizedFieldResponseDTO((CustomizedField) getCustomfield[0], (String) getCustomfield[1]));
+            }
+
+            return new ProductResponseDTO(product, customFields);
+        }).toList();
+
 
         return productList;
     }
