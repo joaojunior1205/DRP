@@ -1,5 +1,7 @@
 package com.example.drp.domain.customizedFields;
 
+import java.sql.Timestamp;
+
 public record CustomizedFieldResponseDTO (
         Long id,
         boolean active,
@@ -7,6 +9,8 @@ public record CustomizedFieldResponseDTO (
         String label,
         boolean obligatory,
         FieldType type,
+        Timestamp createdAt,
+        Timestamp updateAt,
         String value
 ) {
     public CustomizedFieldResponseDTO (CustomizedField customizedField) {
@@ -17,6 +21,8 @@ public record CustomizedFieldResponseDTO (
                 customizedField.getLabel(),
                 customizedField.isObligatory(),
                 customizedField.getType(),
+                customizedField.getCreatedAt(),
+                customizedField.getCreatedAt(),
                 null
         );
     }
@@ -29,6 +35,8 @@ public record CustomizedFieldResponseDTO (
                 customizedField.getLabel(),
                 customizedField.isObligatory(),
                 customizedField.getType(),
+                customizedField.getCreatedAt(),
+                customizedField.getCreatedAt(),
                 value
         );
     }

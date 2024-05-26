@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -48,6 +49,13 @@ public class CustomizedFieldsController {
             CustomizedField customizedField = new CustomizedField(customizedFieldRequest);
 
             customizedField = new CustomizedFieldsService().populateCustomizedField(customizedField, user);
+
+            long currentTimeMillis = System.currentTimeMillis();
+            long offsetMillis = -3 * 60 * 60 * 1000;
+            Timestamp timestamp = new Timestamp(currentTimeMillis + offsetMillis);
+
+            customizedField.setUpdatedAt(timestamp);
+            customizedField.setCreatedAt(timestamp);
 
             return ResponseEntity.ok(customizedFieldRepository.save(customizedField));
         } catch (Exception err) {
