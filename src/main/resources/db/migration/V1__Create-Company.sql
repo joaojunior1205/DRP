@@ -1,9 +1,11 @@
 CREATE TABLE companies
 (
-    id    SERIAL PRIMARY KEY UNIQUE,
-    name  TEXT NOT NULL,
-    cnpj  VARCHAR(255) DEFAULT NULL,
-    phone VARCHAR(255) DEFAULT NULL
+    id         SERIAL PRIMARY KEY UNIQUE,
+    name       TEXT NOT NULL,
+    created_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    cnpj       VARCHAR(255) DEFAULT NULL,
+    phone      VARCHAR(255) DEFAULT NULL
 );
 
 CREATE TABLE users
@@ -27,6 +29,8 @@ CREATE TABLE products
     description      VARCHAR(255) DEFAULT NULL,
     quantity         FLOAT(32)    DEFAULT 0,
     price            FLOAT(32)    DEFAULT 0,
+    created_at       TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    updated_at       TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
     company_id       INTEGER NOT NULL,
     author_id        INTEGER NOT NULL,
     update_author_id INTEGER NOT NULL,
