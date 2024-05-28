@@ -1,6 +1,7 @@
 package com.example.drp.repositories;
 
 import com.example.drp.domain.customizedFields.CustomizedField;
+import com.example.drp.domain.product.ProductCustomizedField;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -10,3 +11,4 @@ public interface CustomizedFieldRepository extends JpaRepository<CustomizedField
     @Query("SELECT cf, pcf.value FROM customizedField cf JOIN ProductCustomizedField pcf ON cf.id = pcf.customizedFieldId WHERE pcf.productId = :productId")
     List<Object[]> findCustomizedFieldsByProductId(Long productId);
 }
+
